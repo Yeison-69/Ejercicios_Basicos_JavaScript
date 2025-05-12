@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ejercicios JavaScript</h1>
+  <div class="container">
+    <button onclick="cargarScript('procesador_nombre_edad.js')">Ejercicio 1: Nombre y Edad</button>
+    <button onclick="cargarScript('conversor_altura.js')">Ejercicio 2: Conversor de Altura</button>
+    <button onclick="cargarScript('calculadora_peso.js')">Ejercicio 3: Calculadora de Peso</button>
+    <button onclick="cargarScript('procesador_texto.js')">Ejercicio 4: Procesador de Texto</button>
+    <button onclick="cargarScript('calculadora_area.js')">Ejercicio 5: Calculadora de Área</button>
+    <button onclick="cargarScript('conversor_tiempo.js')">Ejercicio 6: Conversor de Tiempo</button>
+    <button onclick="cargarScript('comparador_numeros.js')">Ejercicio 7: Comparador de Números</button>
+    <button onclick="cargarScript('procesador_distancia.js')">Ejercicio 8: Procesador de Distancia</button>
+    <button onclick="cargarScript('calculadora_precio.js')">Ejercicio 9: Calculadora de Precio</button>
+    <button onclick="cargarScript('procesador_datos_personales.js')">Ejercicio 10: Procesador de Datos Personales</button>
+  </div>
+
+  <script>
+    function cargarScript(nombreArchivo) {
+      const script = document.createElement('script');
+      script.src = 'src/' + nombreArchivo;
+      script.type = 'text/javascript';
+      document.body.appendChild(script);
+    }
+  </script>
+</body>
+</html>
+
