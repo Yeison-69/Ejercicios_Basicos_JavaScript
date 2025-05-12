@@ -1,0 +1,5 @@
+console.log(5 == "5");          // true (valores iguales, tipos diferentes)
+console.log(5 === "5");         // false (tipos diferentes)
+console.log(0 == false);        // true (coerción a booleano)
+console.log(0 === false);       // false (tipos diferentes)
+console.log(null == undefined); // true (ambos indican ausencia de valor)

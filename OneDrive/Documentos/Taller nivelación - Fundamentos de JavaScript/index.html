@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicios JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .contenedor {
+      max-width: 800px;
+      margin: auto;
+    }
+    .ejercicio {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .output {
+      margin-top: 10px;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 5px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ejercicios de JavaScript</h1>
+  <div class="contenedor" id="contenedorEjercicios"></div>
+
+  <script type="module">
+    const ejercicios = [
+      'Ejercicio_1.1_Conversión_de_Tipos.js',
+      'Ejercicio_1.2_Concatenacion_vs_Suma.js',
+      'Ejercicio_1.3_Uso_de_const.js',
+      'Ejercicio_1.4_Null_vs_Undefined.js',
+      'Ejercicio_1.5_Template_Literals.js',
+      'Ejercicio_2.1_Operadores_Aritmeticos.js',
+      'Ejercicio_2.2_Operadores_de_Comparacion.js',
+      'Ejercicio_2.3_Operadores_Logicos.js',
+      'Ejercicio_2.4_Operador_Ternario.js',
+      'Ejercicio_2.5_Operadores_de_Asignacion.js',
+      'Ejercicio_3.1_Calculo_de_Area.js',
+      'Ejercicio_3.1_If_Else_Boleto.js',
+      'Ejercicio_3.2_Switch_DiaSemana.js',
+      'Ejercicio_3.2_Asignacion_Incremental.js',
+      'Ejercicio_3.3_Comparacion_Numeros.js',
+      'Ejercicio_3.3_For_Suma_y_Factorial.js',
+      'Ejercicio_3.4_Picnic_Booleanos.js',
+      'Ejercicio_3.4_While_vs_DoWhile.js',
+      'Ejercicio_3.5_Concatenacion_Nombre_Edad.js',
+      'Ejercicio_3.6_Incremento_Decremento.js',
+      'Ejercicio_3.7_Igualdad_Entre_Variables.js',
+      'Ejercicio_3.8_Entrada_Nombre_Usuario.js',
+      'Ejercicio_3.9_Par_o_Impar.js',
+      'Ejercicio_3.10_ParseInt_y_Suma.js',
+      'Ejercicio_3.11_Ternario_Mayoria_Edad.js',
+      'Ejercicio_3.12_Operadores_Bitwise.js',
+      'Ejercicio_3.13_Desestructuracion_Objeto.js',
+      'Ejercicio_3.14_Igualdad_Estricta_vs_Flexible.js',
+      'Ejercicio_3.15_Potencia_Exponenciacion.js',
+      'Ejercicio_4.1_Declaracion_vs_Expresion.js',
+      'Ejercicio_4.2_Arrow_Functions.js',
+      'Ejercicio_4.3_Parametros_Por_Defecto.js',
+      
+    ];
+
+    const contenedor = document.getElementById('contenedorEjercicios');
+
+    ejercicios.forEach(nombre => {
+      const div = document.createElement('div');
+      div.className = 'ejercicio';
+      div.innerHTML = `
+        <h3>${nombre}</h3>
+        <button onclick="ejecutar('${nombre}')">Ejecutar</button>
+        <div class="output" id="output-${nombre}">Esperando ejecución...</div>
+      `;
+      contenedor.appendChild(div);
+    });
+
+    window.ejecutar = async function(nombre) {
+      try {
+        const modulo = await import(`./src/${nombre}`);
+        const salida = modulo.default ? modulo.default() : 'Ejecutado (revisar consola)';
+        document.getElementById(`output-${nombre}`).textContent = salida ?? 'Ejecutado correctamente';
+      } catch (error) {
+        document.getElementById(`output-${nombre}`).textContent = 'Error: ' + error.message;
+        console.error('Error al ejecutar', nombre, error);
+      }
+    }
+  </script>
+</body>
+</html>
